@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
-from data_structures import get_names, get_spiciest_foods, print_spicy_foods,\
-                                create_spicy_food, get_spicy_food_by_cuisine, \
-                                print_spiciest_foods, get_average_heat_level
+from data_structures import (
+    get_names,
+    get_spiciest_foods,
+    print_spicy_foods,
+    create_spicy_food,
+    get_spicy_food_by_cuisine,
+    print_spiciest_foods,
+    average_heat_level  # Corrected to match the function name
+)
 
 import io
 import sys
@@ -34,9 +40,10 @@ class TestDataStructures:
 
     def test_get_spiciest_foods(self):
         '''contains function get_spiciest_foods() that returns foods with a heat_level over 5.'''
-        for food in get_spiciest_foods(TestDataStructures.SPICY_FOODS):
-            assert(food["heat_level"]) > 5
-    
+        spiciest = get_spiciest_foods(TestDataStructures.SPICY_FOODS)
+        for food in spiciest:
+            assert food["heat_level"] > 5
+
     def test_print_spicy_foods(self):
         '''contains function print_spicy_foods that returns all foods formatted with 🌶  emojis.'''
         captured_out = io.StringIO()
@@ -64,9 +71,9 @@ class TestDataStructures:
         assert(captured_out.getvalue() == "Green Curry (Thai) | Heat Level: 🌶🌶🌶🌶🌶🌶🌶🌶🌶\n" +
             "Mapo Tofu (Sichuan) | Heat Level: 🌶🌶🌶🌶🌶🌶\n")
 
-    def test_get_average_heat_level(self):
-        '''contains function get_average_heat_level that returns average of heat_levels in spicy_foods.'''
-        assert(get_average_heat_level(TestDataStructures.SPICY_FOODS) == 6)
+    def test_average_heat_level(self):
+        '''contains function average_heat_level that returns average of heat_levels in spicy_foods.'''
+        assert(average_heat_level(TestDataStructures.SPICY_FOODS) == 6)
 
     def test_create_spicy_food(self):
         '''contains function create_spicy_food that returns original list of spicy_foods with new spicy_food added.'''
